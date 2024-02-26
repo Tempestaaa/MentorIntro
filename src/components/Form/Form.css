@@ -1,9 +1,12 @@
+/* BIG PART */
+
 .right {
-  display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
   gap: 2rem;
 }
+
+/* FREE TRIAL */
 
 .freetrial {
   background: var(--clr-freeTrial);
@@ -19,16 +22,83 @@
   font-weight: var(--fw-bold);
 }
 
-.form {
-  display: grid;
+/* FORM */
+
+.form-container {
   grid-template-rows: 1fr auto;
-  grid-template-columns: 1fr;
   gap: 1rem;
   padding: 2rem;
   background: white;
   border-radius: 0.5rem;
   box-shadow: 0 8px 0 0 rgba(0, 0, 0, 0.2);
 }
+
+/* INPUTS */
+
+form {
+  grid-template-rows: 1fr auto;
+  gap: 1rem;
+}
+
+.inputs {
+  grid-template-rows: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.input-part {
+  grid-template-columns: 1fr auto auto;
+  grid-template-rows: subgrid;
+  align-items: center;
+  font-weight: var(--fw-bold);
+}
+
+input {
+  grid-column: 1/-1;
+  padding: 0.8rem 2.2rem;
+  border: 2px solid var(--clr-freeTrial);
+  outline: none;
+  border-radius: 0.5rem;
+  color: var(--clr-text);
+}
+
+input::placeholder {
+  font-weight: var(--fw-semibold);
+}
+
+input + img {
+  grid-column: 3/4;
+  margin-inline: 0.5rem;
+}
+
+.error-part {
+  font-weight: var(--fw-semibold);
+  color: var(--clr-bg);
+  font-size: 0.8rem;
+  font-style: italic;
+  text-align: right;
+  margin-top: 0.2rem;
+}
+
+/* SUBMIT */
+
+input[type="submit"] {
+  padding: 0.8rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  background: var(--clr-btn);
+  box-shadow: 0 4px 0 0 hsl(154, 59%, 40%);
+  text-transform: uppercase;
+  font-weight: var(--fw-semibold);
+  color: white;
+}
+
+input[type="submit"]:hover {
+  opacity: 0.5;
+}
+
+/* TERMS */
 
 .terms-and-services {
   font-size: 0.7em;
@@ -42,31 +112,4 @@
   font-weight: var(--fw-bold);
   color: var(--clr-bg);
   cursor: pointer;
-}
-
-form {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(5, auto);
-  gap: 1rem;
-}
-
-button {
-  padding: 0.8rem;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  background: var(--clr-btn);
-  box-shadow: 0 4px 0 0 hsl(154, 59%, 40%);
-}
-
-button:hover {
-  opacity: 0.5;
-}
-
-button p {
-  text-transform: uppercase;
-  font-weight: var(--fw-semibold);
-  color: white;
 }

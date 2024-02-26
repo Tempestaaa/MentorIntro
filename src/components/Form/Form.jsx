@@ -1,83 +1,127 @@
 import "./Form.css";
 import { useState } from "react";
-import FormInput from "../../utils/FormInput/FormInput";
+import errorIcon from "../../assets/images/icon-error.svg";
+
+const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 const Form = () => {
+  const [errors, setErrors] = useState({});
   const [values, setValues] = useState({
     fname: "",
     lname: "",
     email: "",
     password: "",
+    error: {
+      fname: "First Name cannot be empty",
+      lname: "Last Name cannot be empty",
+      email: "Email cannot be empty",
+      password: "Password cannot be empty",
+    },
   });
-
-  const inputs = [
-    {
-      id: 1,
-      name: "fname",
-      type: "text",
-      placeholder: "First Name",
-      required: true,
-      errorMsg: "First Name cannot be empty",
-      autoComplete: "give-name",
-    },
-    {
-      id: 2,
-      name: "lname",
-      type: "text",
-      placeholder: "Last Name",
-      required: true,
-      errorMsg: "Last Name cannot be empty",
-      autoComplete: "family-name",
-    },
-    {
-      id: 3,
-      name: "email",
-      type: "email",
-      placeholder: "Email",
-      required: true,
-      errorMsg: "Looks like this is not an email",
-      autoComplete: "email",
-    },
-    {
-      id: 4,
-      name: "password",
-      type: "password",
-      placeholder: "Password",
-      required: true,
-      errorMsg: "Password cannot be empty",
-      autoComplete: "current-password",
-    },
-  ];
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+  const handleErrors = () => {
+    const ValidateErrors = { fname: "", lname: "", email: "", password: "" };
+    if (!values.fname.trim()) {
+      ValidateErrors.fname = values.error.fname;
+    }
+
+    if (!values.lname.trim()) {
+      ValidateErrors.lname = values.error.lname;
+    }
+
+    if (!values.email.trim()) {
+      ValidateErrors.email = values.error.email;
+    } else if (!emailRegex.test(values.email.trim())) {
+      ValidateErrors.email = "Looks like this is not an email";
+    }
+
+    if (!values.password.trim()) {
+      ValidateErrors.password = values.error.password;
+    }
+    return setErrors(ValidateErrors);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    handleErrors();
   };
 
   return (
-    <div className="right">
+    <div className="right grid">
       <div className="freetrial">
         <p>
           <span>Try it for free 7 days</span> then $20/mo. thereafter
         </p>
       </div>
-      <div className="form" onSubmit={handleSubmit}>
-        <form noValidate>
-          {inputs.map((input) => (
-            <FormInput
-              key={input.id}
-              {...input}
-              value={values[input.name]}
-              onChange={onChange}
-              errorMsg={input.errorMsg}
-            />
-          ))}
-          <button>
-            <p>claim your free trial</p>
-          </button>
+      <div className="form-container grid" onSubmit={handleSubmit}>
+        <form noValidate className="grid">
+          <div className="inputs grid">
+            {/* FIRST NAME */}
+            <div className="input-and-error grid">
+              <div className="input-part grid">
+                <input
+                  type="text"
+                  name="fname"
+                  value={values.fname}
+                  onChange={onChange}
+                  autoComplete="give-name"
+                  placeholder="First Name"
+                />
+                {errors.fname && <img src={errorIcon} alt="error icon" />}
+              </div>
+              {errors.fname && <div className="error-part">{errors.fname}</div>}
+            </div>
+            {/* LAST NAME */}
+            <div className="input-and-error grid">
+              <div className="input-part grid">
+                <input
+                  type="text"
+                  name="lname"
+                  value={values.lname}
+                  onChange={onChange}
+                  autoComplete="family-name"
+                  placeholder="Last Name"
+                />
+                <img src={errorIcon} alt="error icon" />
+              </div>
+              <div className="error-part">123</div>
+            </div>
+            {/* EMAIL */}
+            <div className="input-and-error grid">
+              <div className="input-part grid">
+                <input
+                  type="email"
+                  name="email"
+                  value={values.email}
+                  onChange={onChange}
+                  autoComplete="email"
+                  placeholder="Email"
+                />
+                <img src={errorIcon} alt="error icon" />
+              </div>
+              <div className="error-part">123</div>
+            </div>
+            {/* PASSWORD */}
+            <div className="input-and-error grid">
+              <div className="input-part grid">
+                <input
+                  type="password"
+                  name="password"
+                  value={values.password}
+                  onChange={onChange}
+                  autoComplete="current-password"
+                  placeholder="Password"
+                />
+                <img src={errorIcon} alt="error icon" />
+              </div>
+              <div className="error-part">123</div>
+            </div>
+          </div>
+          <input type="submit" value="claim your free trial" />
         </form>
         <div className="terms-and-services">
           <p>

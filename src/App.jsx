@@ -4,8 +4,8 @@ import Intro from "./components/Intro/Intro";
 
 function App() {
   return (
-    <div className="app">
-      <div className="container">
+    <div className="app grid">
+      <div className="container grid">
         <Intro />
         <Form />
       </div>
