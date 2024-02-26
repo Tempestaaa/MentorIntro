@@ -1,0 +1,20 @@
+.app {
+  min-height: 100svh;
+  background-color: var(--clr-bg);
+  background-image: url("./assets/images/bg-intro-desktop.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: var(--ff-default);
+  display: grid;
+  place-items: center;
+}
+
+.container {
+  max-width: 65rem;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 1rem;
+}

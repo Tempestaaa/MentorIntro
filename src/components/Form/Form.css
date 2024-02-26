@@ -1,0 +1,72 @@
+.right {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 2rem;
+}
+
+.freetrial {
+  background: var(--clr-freeTrial);
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  font-weight: var(--fw-regular);
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+.freetrial span {
+  font-weight: var(--fw-bold);
+}
+
+.form {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+.terms-and-services {
+  font-size: 0.7em;
+  color: var(--clr-terms);
+  opacity: 0.8d;
+  font-weight: var(--fw-semibold);
+  text-align: center;
+}
+
+.terms-and-services span {
+  font-weight: var(--fw-bold);
+  color: var(--clr-bg);
+  cursor: pointer;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, auto);
+  gap: 1rem;
+}
+
+button {
+  padding: 0.8rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  background: var(--clr-btn);
+  box-shadow: 0 4px 0 0 hsl(154, 59%, 40%);
+}
+
+button:hover {
+  opacity: 0.5;
+}
+
+button p {
+  text-transform: uppercase;
+  font-weight: var(--fw-semibold);
+  color: white;
+}
