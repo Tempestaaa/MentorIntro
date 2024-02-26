@@ -62,7 +62,11 @@ const Form = () => {
           <div className="inputs grid">
             {/* FIRST NAME */}
             <div className="input-and-error grid">
-              <div className="input-part grid">
+              <div
+                className={`input-part grid ${
+                  errors.fname ? "error-border" : ""
+                }`}
+              >
                 <input
                   type="text"
                   name="fname"
@@ -77,7 +81,11 @@ const Form = () => {
             </div>
             {/* LAST NAME */}
             <div className="input-and-error grid">
-              <div className="input-part grid">
+              <div
+                className={`input-part grid ${
+                  errors.lname ? "error-border" : ""
+                }`}
+              >
                 <input
                   type="text"
                   name="lname"
@@ -86,13 +94,17 @@ const Form = () => {
                   autoComplete="family-name"
                   placeholder="Last Name"
                 />
-                <img src={errorIcon} alt="error icon" />
+                {errors.lname && <img src={errorIcon} alt="error icon" />}
               </div>
-              <div className="error-part">123</div>
+              {errors.lname && <div className="error-part">{errors.lname}</div>}
             </div>
             {/* EMAIL */}
             <div className="input-and-error grid">
-              <div className="input-part grid">
+              <div
+                className={`input-part grid ${
+                  errors.email ? "error-border" : ""
+                }`}
+              >
                 <input
                   type="email"
                   name="email"
@@ -101,13 +113,17 @@ const Form = () => {
                   autoComplete="email"
                   placeholder="Email"
                 />
-                <img src={errorIcon} alt="error icon" />
+                {errors.email && <img src={errorIcon} alt="error icon" />}
               </div>
-              <div className="error-part">123</div>
+              {errors.email && <div className="error-part">{errors.email}</div>}
             </div>
             {/* PASSWORD */}
             <div className="input-and-error grid">
-              <div className="input-part grid">
+              <div
+                className={`input-part grid ${
+                  errors.password ? "error-border" : ""
+                }`}
+              >
                 <input
                   type="password"
                   name="password"
@@ -116,9 +132,11 @@ const Form = () => {
                   autoComplete="current-password"
                   placeholder="Password"
                 />
-                <img src={errorIcon} alt="error icon" />
+                {errors.password && <img src={errorIcon} alt="error icon" />}
               </div>
-              <div className="error-part">123</div>
+              {errors.password && (
+                <div className="error-part">{errors.password}</div>
+              )}
             </div>
           </div>
           <input type="submit" value="claim your free trial" />

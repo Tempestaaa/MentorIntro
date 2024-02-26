@@ -79,6 +79,11 @@ input + img {
   margin-top: 0.2rem;
 }
 
+.input-part.error-border input {
+  border: 3px solid var(--clr-bg);
+  color: var(--clr-bg);
+}
+
 /* SUBMIT */
 
 input[type="submit"] {
